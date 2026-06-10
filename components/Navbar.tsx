@@ -4,13 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 const links = [
-  { href: "/servicios", label: "Servicios" },
+  { href: "/que-fabricamos", label: "Qué fabricamos" },
+  { href: "/microapps", label: "MicroApps" },
+  { href: "/como-trabajamos", label: "Cómo trabajamos" },
+  { href: "/la-fabrica", label: "La Fábrica" },
+  { href: "/productos", label: "Productos" },
   { href: "/cursos", label: "Cursos" },
-  { href: "/proceso", label: "Proceso" },
-  { href: "/nosotros", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export function Navbar() {
@@ -18,78 +20,69 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-            <span className="text-lg font-bold tracking-tight text-white">
-              Fabric<span className="text-violet-500">AI</span>
-            </span>
-            <span className="hidden text-[10px] font-medium text-zinc-500 sm:block">
-              by Passus
-            </span>
-          </Link>
+    <header className="nav">
+      <div className="wrap nav-inner">
+        <Link className="brand" href="/" onClick={() => setOpen(false)}>
+          <Logo size={34} className="mark" />
+          <span className="bt">
+            FabricAI<small>by Passus</small>
+          </span>
+        </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 md:flex">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`text-sm transition-colors ${
-                  pathname === l.href
-                    ? "text-white"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
+        {/* Navegación de escritorio */}
+        <nav className="nav-links">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={pathname === l.href ? "active" : undefined}
+            >
+              {l.label}
+            </Link>
+          ))}
           <Link
             href="/contacto"
-            className="hidden rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-violet-500 md:block"
+            className="btn btn-grad"
+            style={{ padding: "10px 20px" }}
           >
-            Agendar llamada →
+            Contacto
           </Link>
+        </nav>
 
-          {/* Mobile menu button */}
-          <button
-            className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-white md:hidden"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
-        </div>
+        {/* Botón menú móvil */}
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="border-t border-zinc-800 bg-zinc-950 px-4 py-4 md:hidden">
-          <nav className="flex flex-col gap-3">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className={`text-sm ${pathname === l.href ? "text-white" : "text-zinc-400"}`}
-              >
-                {l.label}
-              </Link>
-            ))}
+      {/* Panel móvil */}
+      <div className={`nav-mobile${open ? " open" : ""}`}>
+        <div className="wrap">
+          {links.map((l) => (
             <Link
-              href="/contacto"
+              key={l.href}
+              href={l.href}
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-lg bg-violet-600 px-4 py-2.5 text-center text-sm font-medium text-white"
+              className={pathname === l.href ? "active" : undefined}
             >
-              Agendar llamada →
+              {l.label}
             </Link>
-          </nav>
+          ))}
+          <Link
+            href="/contacto"
+            onClick={() => setOpen(false)}
+            className="btn btn-grad cta"
+          >
+            Contacto
+          </Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }
