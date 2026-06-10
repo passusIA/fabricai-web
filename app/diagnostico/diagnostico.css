@@ -1,0 +1,43 @@
+/* Estilos locales de la página de diagnóstico (score de muestra + alerta).
+   Provienen del <style> embebido en el diseño entregado. */
+.score {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 36px;
+}
+.sc {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+.sc .v {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.sc .k {
+  font-size: 0.78rem;
+  color: var(--muted-d);
+  margin-top: 4px;
+}
+.alert {
+  background: rgba(124, 92, 255, 0.14);
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-top: 24px;
+  color: #dfe7f4;
+  font-size: 0.95rem;
+}
+.alert b {
+  color: #fff;
+}
+@media (max-width: 880px) {
+  .score {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

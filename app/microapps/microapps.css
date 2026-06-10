@@ -1,0 +1,112 @@
+/* Estilos locales de la página MicroApps Express (mocks visuales + riesgo).
+   Provienen del <style> embebido en el diseño entregado. */
+.ex-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 14px;
+}
+.ex-mocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.mock {
+  background: #0e1730;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+.mock .top {
+  display: flex;
+  gap: 5px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.mock .top i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+}
+.mock .body {
+  padding: 14px;
+}
+.mock .t {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.mock .fld {
+  height: 9px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+}
+.mock .fld.s {
+  width: 70%;
+}
+.mock .fld.m {
+  width: 88%;
+}
+.mock .total {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: #22d3ee;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  padding-top: 9px;
+}
+.mock .total b {
+  font-family: var(--font-sora), sans-serif;
+  color: #fff;
+}
+.mock .li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  color: #c7d2e6;
+  margin-bottom: 7px;
+}
+.mock .li .ck {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--grad);
+  display: inline-block;
+  flex: none;
+}
+.riesgo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 30px;
+  margin-top: 30px;
+}
+.riesgo div {
+  font-size: 0.96rem;
+  color: #dfe7f4;
+  padding-left: 28px;
+  position: relative;
+}
+.riesgo div::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #22d3ee;
+  font-weight: 800;
+}
+@media (max-width: 880px) {
+  .ex-grid,
+  .ex-mocks,
+  .riesgo {
+    grid-template-columns: 1fr;
+  }
+}

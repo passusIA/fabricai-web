@@ -2,14 +2,24 @@
 
 import { useState } from "react";
 
+const lineas = [
+  "MicroApps Express (simulación rápida)",
+  "MicroApp a medida",
+  "Agente IA / automatización",
+  "Cumplimiento Ley 21.719",
+  "Formación para mi equipo",
+  "Aún no sé, quiero orientación",
+];
+
 export default function ContactoPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [form, setForm] = useState({
     nombre: "",
-    email: "",
     empresa: "",
-    servicio: "",
-    mensaje: "",
+    email: "",
+    telefono: "",
+    linea: lineas[0],
+    proceso: "",
   });
 
   async function handleSubmit(e: React.FormEvent) {
@@ -23,7 +33,14 @@ export default function ContactoPage() {
       });
       if (res.ok) {
         setStatus("ok");
-        setForm({ nombre: "", email: "", empresa: "", servicio: "", mensaje: "" });
+        setForm({
+          nombre: "",
+          empresa: "",
+          email: "",
+          telefono: "",
+          linea: lineas[0],
+          proceso: "",
+        });
       } else {
         setStatus("error");
       }
@@ -32,183 +49,176 @@ export default function ContactoPage() {
     }
   }
 
-  const options = [
-    "Discovery Sprint ($800–$1.500 USD)",
-    "Agente de IA a medida",
-    "Integración de IA en producto existente",
-    "SaaS con IA desde cero",
-    "Fábrica de Agentes (enterprise)",
-    "Retainer mensual",
-    "Cursos y capacitación",
-    "Consulta general",
-  ];
-
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <>
+      <section className="page-banner">
+        <span className="ab x1" />
+        <span className="ab x2" />
+        <div className="wrap inner">
+          <div className="crumbs">
+            <a href="/">Inicio</a> · Contacto
+          </div>
+          <h1>Cuéntanos un proceso. Te mostramos su app.</h1>
+          <p>
+            Describe una tarea que hoy haces a mano y te fabricamos una simulación
+            visual. Sin compromiso — si no tiene sentido, te lo decimos.
+          </p>
+        </div>
+      </section>
 
-      {/* Header */}
-      <div className="mb-12 text-center">
-        <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-widest text-violet-400">
-          Contacto
-        </span>
-        <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
-          Hablemos.
-        </h1>
-        <p className="mx-auto max-w-md text-zinc-400">
-          Contanos qué querés construir. Te respondemos en menos de 24 horas hábiles.
-        </p>
-      </div>
-
-      <div className="grid gap-10 lg:grid-cols-5">
-
-        {/* Form */}
-        <div className="lg:col-span-3">
-          {status === "ok" ? (
-            <div className="rounded-2xl border border-green-500/30 bg-green-500/5 p-10 text-center">
-              <div className="mb-4 text-4xl">✓</div>
-              <h2 className="mb-2 text-xl font-bold text-white">¡Mensaje enviado!</h2>
-              <p className="text-zinc-400">
-                Te respondemos antes de las próximas 24 horas hábiles.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                    Nombre *
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    value={form.nombre}
-                    onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-                    placeholder="Tu nombre"
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors focus:border-violet-500"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                    Email *
-                  </label>
-                  <input
-                    required
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="tu@empresa.com"
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors focus:border-violet-500"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                  Empresa (opcional)
-                </label>
-                <input
-                  type="text"
-                  value={form.empresa}
-                  onChange={(e) => setForm({ ...form, empresa: e.target.value })}
-                  placeholder="Nombre de tu empresa"
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors focus:border-violet-500"
-                />
-              </div>
-
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                  ¿Qué necesitás?
-                </label>
-                <select
-                  value={form.servicio}
-                  onChange={(e) => setForm({ ...form, servicio: e.target.value })}
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white outline-none transition-colors focus:border-violet-500"
+      <section className="white">
+        <div className="wrap">
+          <div className="form-wrap light">
+            {status === "ok" ? (
+              <div style={{ textAlign: "center", padding: "20px 0" }}>
+                <div
+                  style={{
+                    fontSize: "2.4rem",
+                    color: "var(--primary)",
+                    marginBottom: 8,
+                  }}
                 >
-                  <option value="">Seleccionar servicio...</option>
-                  {options.map((o) => (
-                    <option key={o} value={o}>{o}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="mb-1.5 block text-xs font-medium text-zinc-400">
-                  Contanos tu proyecto *
-                </label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.mensaje}
-                  onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
-                  placeholder="¿Qué proceso querés automatizar? ¿Qué sistemas tenés? ¿Cuál es tu presupuesto estimado?"
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-white placeholder-zinc-600 outline-none transition-colors focus:border-violet-500"
-                />
-              </div>
-
-              {status === "error" && (
-                <p className="text-sm text-red-400">
-                  Hubo un error al enviar. Escribinos directo a{" "}
-                  <a href="mailto:hola@fabricai.cl" className="underline">hola@fabricai.cl</a>
+                  ✓
+                </div>
+                <h3 style={{ marginBottom: 6 }}>¡Solicitud enviada!</h3>
+                <p>
+                  Gracias. Te respondemos para coordinar y fabricar tu maqueta en
+                  las próximas 24 horas hábiles.
                 </p>
-              )}
-
-              <button
-                type="submit"
-                disabled={status === "sending"}
-                className="w-full rounded-lg bg-violet-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-violet-500 disabled:opacity-60"
-              >
-                {status === "sending" ? "Enviando..." : "Enviar mensaje →"}
-              </button>
-            </form>
-          )}
-        </div>
-
-        {/* Side info */}
-        <div className="space-y-6 lg:col-span-2">
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-            <h3 className="mb-4 font-semibold text-white">Contacto directo</h3>
-            <div className="space-y-3 text-sm">
-              <div>
-                <p className="text-xs text-zinc-500 mb-1">Email</p>
-                <a
-                  href="mailto:hola@fabricai.cl"
-                  className="text-zinc-300 transition-colors hover:text-white"
-                >
-                  hola@fabricai.cl
-                </a>
               </div>
-              <div>
-                <p className="text-xs text-zinc-500 mb-1">Web</p>
-                <a
-                  href="https://passus.cl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-300 transition-colors hover:text-white"
+            ) : (
+              <>
+                <h3 style={{ textAlign: "center", marginBottom: 6 }}>
+                  Solicitar mi simulación gratis
+                </h3>
+                <p style={{ textAlign: "center", marginBottom: 24 }}>
+                  Te respondemos para coordinar y fabricar tu maqueta.
+                </p>
+                <form onSubmit={handleSubmit}>
+                  <div className="form-grid">
+                    <div className="field">
+                      <label htmlFor="nombre">Nombre</label>
+                      <input
+                        id="nombre"
+                        required
+                        value={form.nombre}
+                        onChange={(e) =>
+                          setForm({ ...form, nombre: e.target.value })
+                        }
+                        placeholder="Tu nombre"
+                      />
+                    </div>
+                    <div className="field">
+                      <label htmlFor="empresa">Empresa</label>
+                      <input
+                        id="empresa"
+                        value={form.empresa}
+                        onChange={(e) =>
+                          setForm({ ...form, empresa: e.target.value })
+                        }
+                        placeholder="Tu empresa o proyecto"
+                      />
+                    </div>
+                    <div className="field">
+                      <label htmlFor="email">Correo</label>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        value={form.email}
+                        onChange={(e) =>
+                          setForm({ ...form, email: e.target.value })
+                        }
+                        placeholder="nombre@empresa.cl"
+                      />
+                    </div>
+                    <div className="field">
+                      <label htmlFor="telefono">Teléfono / WhatsApp</label>
+                      <input
+                        id="telefono"
+                        value={form.telefono}
+                        onChange={(e) =>
+                          setForm({ ...form, telefono: e.target.value })
+                        }
+                        placeholder="+56 9 ..."
+                      />
+                    </div>
+                    <div className="field full">
+                      <label htmlFor="linea">¿Qué línea te interesa?</label>
+                      <select
+                        id="linea"
+                        value={form.linea}
+                        onChange={(e) =>
+                          setForm({ ...form, linea: e.target.value })
+                        }
+                      >
+                        {lineas.map((l) => (
+                          <option key={l} value={l}>
+                            {l}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="field full">
+                      <label htmlFor="proceso">
+                        ¿Qué proceso quieres convertir en app?
+                      </label>
+                      <textarea
+                        id="proceso"
+                        required
+                        rows={3}
+                        value={form.proceso}
+                        onChange={(e) =>
+                          setForm({ ...form, proceso: e.target.value })
+                        }
+                        placeholder="Ej: hoy hago las cotizaciones en un Excel y las envío por WhatsApp..."
+                      />
+                    </div>
+                    <div className="field full">
+                      <button
+                        type="submit"
+                        className="btn btn-grad"
+                        style={{ width: "100%" }}
+                        disabled={status === "sending"}
+                      >
+                        {status === "sending" ? "Enviando..." : "Enviar solicitud"}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                {status === "error" && (
+                  <p
+                    style={{
+                      fontSize: "0.86rem",
+                      color: "#c0392b",
+                      marginTop: 14,
+                      textAlign: "center",
+                    }}
+                  >
+                    Hubo un error al enviar. Escríbenos directo a{" "}
+                    <a href="mailto:info@passus.cl">info@passus.cl</a>
+                  </p>
+                )}
+                <p
+                  style={{
+                    fontSize: "0.76rem",
+                    color: "var(--muted)",
+                    marginTop: 16,
+                    textAlign: "center",
+                  }}
                 >
-                  passus.cl
-                </a>
-              </div>
-            </div>
+                  Al enviar aceptas que Passus SpA trate tus datos para
+                  contactarte.
+                </p>
+              </>
+            )}
           </div>
-
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
-            <h3 className="mb-3 font-semibold text-white">¿Cómo es la llamada?</h3>
-            <ul className="space-y-2 text-sm text-zinc-400">
-              <li className="flex gap-2"><span className="text-violet-400">→</span> 30 minutos por Zoom o Meet</li>
-              <li className="flex gap-2"><span className="text-violet-400">→</span> Sin presentaciones largas</li>
-              <li className="flex gap-2"><span className="text-violet-400">→</span> Te decimos honestamente si podemos ayudarte</li>
-              <li className="flex gap-2"><span className="text-violet-400">→</span> Sin costo, sin compromiso</li>
-            </ul>
-          </div>
-
-          <div className="rounded-xl border border-green-500/20 bg-green-500/5 p-6">
-            <p className="text-sm text-green-400 font-medium mb-1">Tiempo de respuesta</p>
-            <p className="text-sm text-zinc-400">
-              Respondemos todos los mensajes en menos de 24 horas hábiles.
-            </p>
-          </div>
+          <p className="center" style={{ marginTop: 26, color: "var(--muted)" }}>
+            También puedes escribirnos a{" "}
+            <a href="mailto:info@passus.cl">info@passus.cl</a>
+          </p>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
