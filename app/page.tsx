@@ -300,7 +300,7 @@ export default function HomePage() {
               Solicitar mi simulación gratis
             </Link>
             <Link href="/diagnostico" className="btn btn-ghost">
-              Diagnóstico Ley 21.719
+              Diagnósticos gratuitos
             </Link>
           </div>
         </div>

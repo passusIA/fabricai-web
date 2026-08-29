@@ -152,7 +152,10 @@ export default function ProductosPage() {
             <Link href="/contacto" className="btn btn-grad">
               Solicitar agente personalizado
             </Link>
-            <Link href="/diagnostico" className="btn btn-ghost">
+            <Link
+              href="/diagnostico/proteccion-datos-cl"
+              className="btn btn-ghost"
+            >
               Diagnóstico Ley 21.719
             </Link>
           </div>

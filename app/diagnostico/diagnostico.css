@@ -1,5 +1,9 @@
-/* Estilos locales de la página de diagnóstico (score de muestra + alerta).
-   Provienen del <style> embebido en el diseño entregado. */
+/* ============================================================
+   Diagnóstico de sistemas de gestión · estilos locales
+   Prefijo dx- para no chocar con el sistema de diseño global.
+   ============================================================ */
+
+/* ---------- Reporte de muestra del hub (diseño original) ---------- */
 .score {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -36,8 +40,729 @@
 .alert b {
   color: #fff;
 }
+
+/* ---------- Hub: tarjetas de dominio ---------- */
+.dx-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 44px;
+}
+.dx-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radio);
+  padding: 28px 26px;
+  text-decoration: none;
+  transition: 0.22s;
+}
+.dx-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: #cdd9ee;
+}
+.dx-card .n {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--violet);
+  margin-bottom: 12px;
+}
+.dx-card h3 {
+  margin-bottom: 10px;
+}
+.dx-card p {
+  font-size: 0.94rem;
+  margin-bottom: 16px;
+}
+.dx-card .marcos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.dx-card .marcos span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: #eaf1ff;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.dx-card .go {
+  margin-top: auto;
+  color: var(--primary);
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.dx-card .go::after {
+  content: " \2192";
+}
+
+/* ---------- Contenedor del simulador ---------- */
+.dx-app {
+  padding: 56px 0 92px;
+}
+.dx-shell {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radio);
+  box-shadow: var(--shadow);
+  padding: 34px;
+}
+.dx-aviso {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #f2f6ff;
+  border: 1px solid #d7e3ff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+.dx-aviso b {
+  color: var(--ink);
+}
+.dx-aviso svg {
+  flex: none;
+  color: var(--primary);
+  margin-top: 2px;
+}
+
+/* ---------- Portada del simulador ---------- */
+.dx-intro h2 {
+  font-size: 1.7rem;
+}
+.dx-intro .marcos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 24px;
+}
+.dx-intro .marcos span {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+/* Los campos del sistema de diseño vienen preparados para fondo oscuro; aquí
+   viven sobre una tarjeta blanca, así que se recolorean como .form-wrap.light. */
+.dx-intro .field label {
+  color: var(--ink);
+}
+.dx-intro .field input,
+.dx-intro .field select {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.dx-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 26px 0;
+}
+.dx-meta div {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.dx-meta b {
+  display: block;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+.dx-meta small {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.dx-dimlist {
+  list-style: none;
+  margin: 6px 0 26px;
+}
+.dx-dimlist li {
+  position: relative;
+  padding: 9px 0 9px 30px;
+  font-size: 0.95rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.dx-dimlist li:last-child {
+  border-bottom: none;
+}
+.dx-dimlist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cyan);
+}
+.dx-dimlist li b {
+  color: var(--ink);
+  font-family: var(--font-sora), sans-serif;
+}
+.dx-dimlist li span {
+  color: var(--muted);
+}
+
+/* ---------- Progreso ---------- */
+.dx-prog {
+  margin-bottom: 26px;
+}
+.dx-prog .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.dx-prog .top b {
+  font-family: var(--font-sora), sans-serif;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+.dx-bar {
+  height: 8px;
+  border-radius: 99px;
+  background: #eef2f8;
+  overflow: hidden;
+}
+.dx-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: var(--grad);
+  transition: width 0.3s ease;
+}
+.dx-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.dx-steps button {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 6px 13px;
+  cursor: pointer;
+  transition: 0.18s;
+}
+.dx-steps button:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.dx-steps button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.dx-steps button.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+  opacity: 1;
+}
+.dx-steps button.ok {
+  border-color: #bcd3ff;
+  background: #eaf1ff;
+  color: var(--primary);
+  opacity: 1;
+}
+
+/* ---------- Preguntas ---------- */
+.dx-dimhead {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.dx-dimhead h3 {
+  font-size: 1.35rem;
+}
+.dx-dimhead p {
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+.dx-q {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-top: 20px;
+}
+.dx-q .qh {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.dx-q .qn {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--grad);
+  color: #fff;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dx-q h4 {
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+.dx-q .ayuda {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin: 8px 0 0 38px;
+}
+.dx-q .ref {
+  display: inline-block;
+  margin: 12px 0 0 38px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--violet);
+  background: #f3efff;
+  border-radius: 6px;
+  padding: 3px 9px;
+}
+.dx-opts {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0 38px;
+}
+.dx-opt {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 0.92rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.15s;
+  background: #fff;
+}
+.dx-opt:hover {
+  border-color: #bcd3ff;
+  background: #fafcff;
+}
+.dx-opt.on {
+  border-color: var(--primary);
+  background: #eaf1ff;
+  font-weight: 600;
+}
+.dx-opt input {
+  accent-color: var(--primary);
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+.dx-opt .lv {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.dx-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.dx-nav .right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-left: auto;
+}
+.dx-falta {
+  font-size: 0.85rem;
+  color: #b4532b;
+}
+button.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Resultado ---------- */
+.dx-res-head {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 34px;
+  align-items: center;
+}
+.dx-gauge {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.dx-gauge::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  background: #fff;
+  border-radius: 50%;
+}
+.dx-gauge .val {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.dx-gauge .val b {
+  display: block;
+  font-family: var(--font-sora), sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+.dx-gauge .val small {
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dx-res-head h2 {
+  font-size: 1.9rem;
+}
+.dx-nivel {
+  display: inline-block;
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--grad);
+  border-radius: 999px;
+  padding: 6px 16px;
+  margin-bottom: 12px;
+}
+.dx-ficha {
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.dx-ficha b {
+  color: var(--ink);
+}
+
+.dx-sub {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin: 38px 0 16px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+.dx-dims {
+  display: grid;
+  gap: 16px;
+}
+.dx-dim .lab {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.dx-dim .lab b {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+.dx-dim .lab span {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.dx-dim .lab span i {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ink);
+}
+.dx-dim .track {
+  height: 10px;
+  border-radius: 99px;
+  background: #eef2f8;
+  overflow: hidden;
+}
+.dx-dim .track i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+}
+.dx-dim p {
+  font-size: 0.83rem;
+  margin-top: 5px;
+}
+
+.dx-gaps {
+  display: grid;
+  gap: 12px;
+}
+.dx-gap {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--muted-d);
+  border-radius: 12px;
+  padding: 18px 20px;
+  background: #fff;
+}
+/* Los modificadores van prefijados: `.media` ya existe en el sistema de diseño
+   global (placeholder de imagen) y arrastraba su min-height a estas tarjetas. */
+.dx-gap.dx-c-alta {
+  border-left-color: #d64545;
+  background: #fff8f7;
+}
+.dx-gap.dx-c-media {
+  border-left-color: #d9962b;
+  background: #fffcf5;
+}
+.dx-gap.dx-c-baja {
+  border-left-color: var(--primary);
+}
+.dx-gap .gh {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.dx-crit {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+.dx-crit.dx-c-alta {
+  background: #fde8e6;
+  color: #a33232;
+}
+.dx-crit.dx-c-media {
+  background: #fdf0dc;
+  color: #8a5b12;
+}
+.dx-crit.dx-c-baja {
+  background: #eaf1ff;
+  color: var(--primary);
+}
+.dx-gap .dim {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dx-gap h4 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.dx-gap p {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.dx-gap p b {
+  color: var(--ink);
+}
+.dx-gap .ref {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.dx-road {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.dx-hito {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  background: var(--bg);
+}
+.dx-hito .plazo {
+  font-family: var(--font-sora), sans-serif;
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.dx-hito .foco {
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.dx-hito ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.dx-hito li {
+  font-size: 0.87rem;
+  color: var(--text);
+  padding-left: 20px;
+  position: relative;
+}
+.dx-hito li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--violet);
+}
+
+.dx-fort {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.dx-fort li {
+  position: relative;
+  padding: 8px 0 8px 30px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.dx-fort li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 21px;
+  height: 21px;
+  background: #eaf1ff;
+  color: var(--primary);
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dx-impacto {
+  background: #0b1020;
+  border-radius: 14px;
+  padding: 24px 26px;
+  color: #dfe7f4;
+  font-size: 0.93rem;
+}
+.dx-impacto b {
+  display: block;
+  font-family: var(--font-sora), sans-serif;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+.dx-cierre {
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.dx-cierre .btn {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 12px 22px;
+}
+.dx-link {
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+.dx-link:hover {
+  color: var(--primary);
+}
+
+/* ---------- Responsive ---------- */
 @media (max-width: 880px) {
   .score {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .dx-grid,
+  .dx-meta,
+  .dx-road {
+    grid-template-columns: 1fr;
+  }
+  .dx-shell {
+    padding: 24px 18px;
+  }
+  .dx-res-head {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .dx-q .ayuda,
+  .dx-q .ref,
+  .dx-opts {
+    margin-left: 0;
+  }
+}
+
+/* ---------- Impresión del reporte ---------- */
+@media print {
+  header.nav,
+  footer.ft,
+  .page-banner,
+  .dx-cierre,
+  .dx-aviso {
+    display: none !important;
+  }
+  .dx-app {
+    padding: 0;
+  }
+  .dx-shell {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .dx-gap,
+  .dx-hito {
+    break-inside: avoid;
   }
 }
